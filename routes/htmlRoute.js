@@ -10,7 +10,7 @@ module.exports = function(app){
     });
 
 
-    //No matching route
+    //To cover if No matching route then send em back to starter page
     app.get("*",function(req,res){
         res.sendFile(path.resolve("public", "index.html"));
     });

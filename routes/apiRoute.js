@@ -1,6 +1,7 @@
+//Consts
 const fs= require("fs");
 
-//NoteData
+//NoteData Consts
 const noteData = require("../db/db.json");
 const dB = "../db/db.json";
 
@@ -21,6 +22,8 @@ module.exports = function(app){
 
     //Post
     app.post("/api/notes", function(req, res){
+
+        //arr to fill
         const noteNew ={
             id: noteData.length +1,
             title: req.body.title,
@@ -47,7 +50,7 @@ module.exports = function(app){
             noteData[i].id = i+1;
         }
         //write
-        fs.writeFile(dB,JSON.stringify(noteData),()=>{console.log("Deleted note. Hope ya didn't need that")});
+        fs.writeFile(dB,JSON.stringify(noteData),()=>{ console.log("Deleted note. Hope ya didn't need that!") });
         res.json(true);
         res.json(noteData)
     });
