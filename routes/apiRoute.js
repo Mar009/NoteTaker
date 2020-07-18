@@ -41,7 +41,7 @@ module.exports = function(app){
 
 
     //Delete
-    app.delete("/api/notes", function(req, res){
+    app.delete("/api/notes/:id", function(req, res){
         const arr= req.params.id -1;
 
         //Splice
@@ -50,7 +50,8 @@ module.exports = function(app){
             noteData[i].id = i+1;
         }
         //write
-        fs.writeFile(dB,JSON.stringify(noteData),()=>{ console.log("Deleted note. Hope ya didn't need that!") });
+        fs.writeFile(dB,JSON.stringify(noteData),()=>{
+             console.log("Deleted note. Hope ya didn't need that!") });
         res.json(true);
         res.json(noteData)
     });
